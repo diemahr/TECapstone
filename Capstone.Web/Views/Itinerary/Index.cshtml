@@ -1,0 +1,82 @@
+﻿@using Capstone.Web.Models
+@model List<Itinerary>
+
+@section extraCss{
+<link href="~/Content/css/MyItineraries.css" rel="stylesheet" />
+}
+@section topJS{
+    <script src="~/Scripts/Main.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKVNsdmZpG7zsCkm1YqUBx5uvgYR0t6KE">
+    </script>
+
+}
+
+
+<div id="map-container" class="col-md-7">
+    <div id="map">
+
+    </div>
+</div>
+
+
+<div id="itinerary-container" class="row">
+
+    <div class="row">
+        <div class="col">
+            <a id="Create" class="btn btn-warning" href="@Url.Action("Detail", "Itinerary")">Create New Itinerary</a>
+        </div>
+    </div>
+    
+
+    <div class="row">
+        @foreach (var itinerary in Model)
+        {
+            string blue = "#2E88F5";
+            string teal = "#11BEC2";
+            string red = "#F5402E";
+            string color = blue;
+
+            
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <div style="height: 3rem; background-color: @color">
+
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">@itinerary.Title</h5>
+                        <p class="card-text">
+                            Created On: @itinerary.CreationDate.Date.ToString()
+                        </p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">@itinerary.Description</li>
+                    </ul>
+                    <div class="card-body text-center">
+                        <a href="@Url.Action("Detail", "Itinerary", new { })" class=" btn btn-outline-light card-link">View or Update</a>
+                    </div>
+                </div>
+            </div>
+
+            if (color == blue)
+            {
+                color = teal;
+            }
+            else if (color == teal)
+            {
+                color = red;
+            }
+            else if(color == red)
+            {
+                color = blue;
+            }
+
+        }
+    </div>
+</div>
+
+@section BottomJS{
+    <script>
+        
+    </script>
+}
+

@@ -1,0 +1,87 @@
+﻿@using Capstone.Web.Models
+@model Landmark
+@section extraCSS{
+    <link href="~/Content/css/LandmarkDetail.css" rel="stylesheet" />
+    <style>
+        #header-img-container {
+            background-image: url('../../Content/img/@(Model.PicName).jpg');
+        }
+    </style>
+}
+@section topJS{
+    <script src="~/Scripts/LandmarkDetail.js"></script>
+}
+<!------------Header Img--------------->
+<div id="header-img-container" class="row">
+    <div class="col">
+        <a id="Create" class="btn btn-warning" href="@Url.Action("Detail", "Itinerary")">Create An Itinerary</a>
+    </div>
+</div>
+<!------------Info--------------->
+<div id="place-detail-info-container" class="row">
+    <div class="col">
+        <h1>
+            @Model.Name
+        </h1>
+    </div>
+    <div class="col">
+        <p>@Model.Address</p>
+    </div>
+    @*<div class="col">
+            <ul class="d-block">
+                <li class="list-item">Info</li>
+                <li class="list-item">Info</li>
+                <li class="list-item">Info</li>
+            </ul>
+        </div>
+        <div class="col">
+            <ul class="d-block">
+                <li class="list-item">Info</li>
+                <li class="list-item">Info</li>
+                <li class="list-item">Info</li>
+            </ul>
+        </div>*@
+</div>
+<!------------Description--------------->
+<div id="place-description-container" class="row">
+    <div class="col-md-5">
+        <p class="lead">
+            @Model.Description
+        </p>
+    </div>
+    <div id="cincy" class="col-md-5">
+    </div>
+
+</div>
+<!------------Place On Map--------------->
+<div id="place-map-container" class="row">
+    <div class="col">
+        <div id="map"></div>
+    </div>
+</div>
+<!------------reviews--------------->
+<div id="review-container" class="row">
+</div>
+
+@section bottomJS{
+    <script>
+        function initMap() {
+            var uluru = { lat: @Model.Latitude, lng: @Model.Longitude };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 17,
+                center: uluru
+            });
+            //var marker = new google.maps.Marker({
+            //    position: uluru,
+            //    map: map
+            //});
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKVNsdmZpG7zsCkm1YqUBx5uvgYR0t6KE&callback=initMap">
+    </script>
+}
+@*
+    APIs
+    AIzaSyCKVNsdmZpG7zsCkm1YqUBx5uvgYR0t6KE
+*@

@@ -1,0 +1,149 @@
+﻿@using Capstone.Web.Models
+@model List<Landmark>
+@section extraCSS {
+    <link href="~/Content/css/register-login.css" rel="stylesheet" />
+    <link href="~/Content/css/Home.css" rel="stylesheet" />
+}
+
+<div class="row">
+    <div class="col-4">
+        <div class="detail">
+            @foreach (var landmark in Model)
+            {
+                if (landmark.Type == "museum")
+                {
+                    <div class="card bg-light mb-3" style="max-width: 150rem;">
+                        <div class="card">
+                            <a href="@Url.Action("LandmarkDetail", "Landmark", new { PlaceId= landmark.PlaceId } )">
+                                <div class="card-title">
+                                    <h1>@landmark.Name</h1>
+                                </div>
+                                <div class="card-body">
+                                    <p>@landmark.Description</p>
+                                    <p class="card-text">@landmark.Address</p>
+
+                                    <img src="~/Content/img/@(landmark.PicName).jpg" />
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="detail">
+
+            @foreach (var landmark in Model)
+            {
+                if (landmark.Type == "park")
+                {
+                    <div class="card bg-light mb-3" style="max-width: 150rem;">
+                        <div class="card">
+                            <a href="@Url.Action("LandmarkDetail", "Landmark", new { PlaceId= landmark.PlaceId } )">
+                                <div class="card-title">
+                                    <h1>@landmark.Name</h1>
+                                </div>
+                                <div class="card-body">
+                                    <p>@landmark.Description</p>
+                                    <p class="card-text">@landmark.Address</p>
+
+                                    <img src="~/Content/img/@(landmark.PicName).jpg" />
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+    <div class="col-4">
+        <div class="detail">
+
+            @foreach (var landmark in Model)
+            {
+
+                if (landmark.Type == "restaurant")
+                {
+                    <div class="card bg-light mb-3" style="max-width: 150rem;">
+                        <div class="card">
+                            <a href="@Url.Action("LandmarkDetail", "Landmark", new { PlaceId= landmark.PlaceId } )">
+                                <div class="card-title">
+                                    <h1>@landmark.Name</h1>
+                                </div>
+                                <div class="card-body">
+                                    <p>@landmark.Description</p>
+                                    <p class="card-text">@landmark.Address</p>
+
+                                    <img src="~/Content/img/@(landmark.PicName).jpg" />
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div class="detail">
+
+                @foreach (var landmark in Model)
+                {
+                    if (landmark.Type == "store")
+                    {
+
+                        <div class="card bg-light mb-3" style="max-width: 150rem;">
+                            <div class="card">
+                                <a href="@Url.Action("LandmarkDetail", "Landmark", new { PlaceId= landmark.PlaceId } )">
+                                    <div class="card-title">
+                                        <h1>@landmark.Name</h1>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>@landmark.Description</p>
+                                        <p class="card-text">@landmark.Address</p>
+
+                                        <img src="~/Content/img/@(landmark.PicName).jpg" />
+
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="detail">
+
+                @foreach (var landmark in Model)
+                {
+                    if (landmark.Type == "venue")
+                    {
+                        <div class="card bg-light mb-3" style="max-width: 150rem;">
+                            <div class="card">
+                                <a href="@Url.Action("LandmarkDetail", "Landmark", new { PlaceId= landmark.PlaceId } )">
+                                    <div class="card-title">
+                                        <h1>@landmark.Name</h1>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>@landmark.Description</p>
+                                        <p class="card-text">@landmark.Address</p>
+
+                                        <img src="~/Content/img/@(landmark.PicName).jpg" />
+
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+
+    </div>
+</div>

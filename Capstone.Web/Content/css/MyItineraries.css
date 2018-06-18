@@ -1,0 +1,33 @@
+﻿
+body {
+    background-image: url('../img/Travel11.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#Create{
+    margin: 2em auto;
+    height: 10%
+}
+.card{
+    margin: 1em 1em;
+    margin-bottom: 1em;
+    border: 1px solid #fff;
+    background-color: rgba(0,0,0,.7)
+}
+
+.card-body{
+    color: #fff;
+}
+
+.card p{
+    font-size: .8em;
+}
+
+.card li{
+    height: 7em;
+}
+
+/*stylesheet for Itineraryform */
+
+

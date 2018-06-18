@@ -1,0 +1,122 @@
+﻿/***Container*****/
+html {
+    height: 100%;
+}
+
+.container-fluid {
+    padding: 0 4em !important;
+}
+
+body {
+    background-color: ghostwhite;
+    min-height: 100%;
+    font-family: 'Maven Pro', sans-serif;
+}
+
+/***NavBar****/
+header .navbar {
+    background-color: #fff;
+    height: 100px;
+    color: floralwhite;
+}
+
+.navbar-brand img {
+    border-radius: 20%;
+}
+
+.navbar a {
+    color: #11BFC1;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+    .navbar a:hover {
+        color: #F43F2E;
+    }
+
+header .navbar img {
+    height: auto;
+    width: 4.2em;
+}
+/*client-side validation css*/
+label {
+    display: inline-block;
+    min-width: 200px;
+}
+
+    label.error {
+        color: red;
+    }
+
+    label.valid {
+        color: green;
+    }
+
+footer {
+    bottom: 0;
+    left: 0;
+    position: relative;
+    width: 100%;
+    color: #11BFC1;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: #fff;
+    margin-top: 10%;
+}
+
+.page-wrap {
+    min-height: 100%;
+    /* equal to footer height */
+    margin-bottom: -30px;
+}
+
+.page-wrap:after {
+    content: "";
+    display: block;
+}
+
+.site-footer, .page-wrap:after {
+    height: 100px;
+}
+
+.site-footer ul{
+    width: 100%;
+    text-align: center;
+    position: relative;
+    bottom: -30%;
+}
+
+.site-footer li {
+    width: 90%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+
+footer .list-inline {
+    text-align: left;
+    display: inline-block;
+}
+
+
+.footer i {
+    padding-left: 1rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.detail img {
+    width: 100%;
+}
+
+/***Alert Message***/
+#alert-message {
+    height: 20%;
+    padding: 1.5em;
+}

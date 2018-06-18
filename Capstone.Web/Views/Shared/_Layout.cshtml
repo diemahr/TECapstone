@@ -1,0 +1,124 @@
+﻿
+@{
+    string username = ViewBag.Username as string;
+
+    string alertMessage = "";
+    if ( TempData["Alert.Message"] != null)
+    {
+        alertMessage = TempData["Alert.Message"].ToString();
+    }
+
+    string alertType = "";
+    if (TempData["Alert.Type"] != null)
+    {
+        alertType = TempData["Alert.Type"].ToString().ToLower();
+    }
+
+    string alertDisplay = "none";
+    if (TempData["Alert.Display"] != null)
+    {
+        alertDisplay = TempData["Alert.Display"].ToString();
+    }
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TMT! CityTours</title>
+    <!--CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro:700" rel="stylesheet">
+    <link href="~/Content/css/site.css" rel="stylesheet" />
+    @RenderSection("extraCSS", false)
+    <!--JS-->
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/user-registration.js"></script>
+
+    @RenderSection("topJS", false)
+
+
+</head>
+<body>
+    <div class="container-fluid">
+        <header>
+            <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                    <img class="img-fluid" src="~/Content/img/Bravo!-City-tour.jpg" />
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <nav class="nav nav-pills nav-fill">
+                        <a class="nav-item nav-link" href="@Url.Action("Index", "Home")">Home</a>
+                        @if (ViewBag.Username == "Admin")
+                        {
+                            <a class="nav-item nav-link" href="@Url.Action("Create", "Landmark")">Manage Landmarks</a>
+                        }
+                        @if (ViewBag.Username != "Anonymous")
+                        {
+                            <a class="nav-item nav-link" href="@Url.Action("Index", "Itinerary")">Itinerary</a>
+                        }
+
+                        <a class="nav-item nav-link" href="@Url.Action("PopularLandmarks", "Landmark")">Popular Landmarks</a>
+                        <a class="nav-item nav-link" href="@Url.Action("About", "Home")">About</a>
+                        @*<a class="nav-item nav-link" href="@Url.Action("Contact", "Home")">Contact US</a>*@
+                    </nav>
+                </div>
+
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        @if (ViewBag.Username != "Anonymous")
+                        {
+                            <li class="list-inline-item">
+                                <a class="nav-link btn btn-submit" href="#">Hello @(ViewBag.Username)!</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="nav-link btn btn-submit" href="@Url.Action("Logout", "Home")">Log Out</a>
+                            </li>
+                        }
+                        else {
+                            <li class="list-inline-item">
+                                <a class="nav-link btn btn-submit" href="@Url.Action("Login", "Home")">Login</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="nav-link btn btn-submit" href="@Url.Action("Register", "Home")">Register</a>
+                            </li>
+                        }
+                </ul>
+            </nav>
+            <!----Error/Success Message----->
+            <div id="alert-message" class="bg-@(alertType)" style="color:#fff; text-align:center; height:15%; display:@alertDisplay;">@alertMessage</div>
+
+            @RenderSection("HeaderBottom", false)
+        </header>
+        <div class="page-wrap">
+            @RenderBody()
+        </div>
+    </div>
+
+    <footer class="footer site-footer">
+        <ul class="list-inline ">
+            <li>
+                <i class="fa fa-home"></i> 1776 Mentor Ave Suite 355, Cincinnati, OH 45212
+                <i class="fa fa-phone"> (800) 000-0000</i>
+                <i class="fa fa-envelope-o"> citytour@gmail.com</i>
+            </li>
+        </ul>
+    </footer>
+    <script>
+        function fadeOut() {
+            $('#alert-message').fadeOut(slow, swing)
+        }
+    </script>
+    @RenderSection("BottomJS", false)
+</body>
+</html>

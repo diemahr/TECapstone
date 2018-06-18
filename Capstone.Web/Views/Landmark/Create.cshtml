@@ -1,0 +1,97 @@
+﻿@using Capstone.Web.Models
+@model List<Landmark>
+@section extraCSS{
+    <link href="~/Content/css/LandmarkManage.css" rel="stylesheet" />
+}
+@section topJS{
+    <script src="~/Scripts/CreateLandmark.js"></script>
+}
+<h1 class="text-center">Manage Landmarks</h1>
+<div id="main-container" class="row">
+    <div id="landmark-list-container" class="col-md-3">
+        <h3 class="text-left">Landmarks</h3>
+        @foreach (var landmark in Model)
+        {
+            <div class="card p-2" style="width: 100%;">
+                <div class="row text-center">
+                    <div class="col">
+                        <h5 class="card-title">@landmark.Name</h5>
+                        @*Hidden Fields*@
+                        <input class="HiddenPlaceId" type="hidden" value="@landmark.PlaceId" />
+                        <input class="HiddenName" type="hidden" value="@landmark.Name" />
+                        <input class="HiddenAddress" type="hidden" value="@landmark.Address" />
+                        <input class="HiddenType" type="hidden" value="@landmark.Type" />
+                        <input class="HiddenLat" type="hidden" value="@landmark.Latitude" />
+                        <input class="HiddenLng" type="hidden" value="@landmark.Longitude" />
+                        <input class="HiddenDescription" type="hidden" value="@landmark.Description">
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-6 px-2">
+                        <button class="edit-btn text-success text-center">Edit</button>
+                    </div>
+                    <div class="col-md-6 px-2">
+                        <form id="DeleteLandmark" action="@Url.Action("Delete", "Landmark",new { Id = landmark.PlaceId })" method="Post">
+                            <button form="DeleteLandmark" class="delete-btn text-danger  text-center">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+    <div id="map-container" class="col-md-6">
+        <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+        <div id="map"></div>
+    </div>
+    <div id="place-detail-form" class="col-md-3">
+        <div class="row">
+            <div class="col">
+                <h3 class="text-left">Details</h3>
+                <form id="LandmarkCreate" action="@Url.Action("Create", "Landmark")" method="post">
+                    <div class="form-group">
+                        <label for="PlaceId">Place ID</label>
+                        <input id="PlaceId" class="form-control" type="text" name="PlaceId" value="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Name">Name</label>
+                        <input id="Name" class="form-control" type="text" name="Name" value="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Address">Address</label>
+                        <input id="Address" class="form-control" type="text" name="Address" value="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Type">Type</label>
+                        <input id="Type" class="form-control" type="text" name="Type" value="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Latitude">Latitude</label>
+                        <input id="Latitude" class="form-control" type="text" name="Latitude" value="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Longitude">Longitude</label>
+                        <input id="Longitude" class="form-control" type="text" name="Longitude" value="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Description">Description</label>
+                        <input id="Description" class="form-control" type="text" name="Description" value="" />
+                    </div>                      
+                        <input id="SaveLandmark" type="submit" value="Save Landmark" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!------Body-->
+@section BottomJS{
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKVNsdmZpG7zsCkm1YqUBx5uvgYR0t6KE&libraries=places&callback=initAutocomplete"
+            async defer></script>
+}
+
+@*
+    APIs
+    AIzaSyCKVNsdmZpG7zsCkm1YqUBx5uvgYR0t6KE
+
+*@
+
